@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/nullstyle.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>task6</title>
+	</head>
+	<body>
+		<main class="page">
+			<div class="page__container">
+				<div class="task">
+					<div class="task__condition text">
+						Задача 12. Зберігати у пам’яті список справ, які користувачу треба виконати (зберігати у localStorage). Періодично випадковим чином вибирати якусь з справ і
+						виводити користувачу (з використанням confirm). Якщо користувач натискає на «Ок», то видаляти цю задачу.
+					</div>
+				</div>
+				<script>
+					let userThingsToDo = ["clean house", "read book", "work", "make dinner", "reach mountain top", "cut hair"]
+					localStorage.setItem("thisngsToDo", JSON.stringify(userThingsToDo))
+					class Tasks {
+						constructor(tasks) {
+							this.tasks = tasks
+						}
+						getRandTaskIndx() {
+							return 0 + Math.floor(Math.random() * (this.tasks.length - 1 - 0 + 1))
+						}
+						showTask(interval) {
+							setInterval(() => {
+								if (this.tasks.length > 0) {
+									let taskIndx = this.getRandTaskIndx()
+									if (confirm(this.tasks[taskIndx])) {
+										this.tasks.splice(taskIndx, 1)
+										localStorage.setItem("thisngsToDo", JSON.stringify(this.tasks))
+									} else {
+										clearInterval()
+									}
+								}
+							}, interval)
+						}
+					}
+					window.onload = function () {
+						let tasks = new Tasks(userThingsToDo)
+						tasks.showTask(5000)
+					}
+				</script>
+			</div>
+		</main>
+	</body>
+</html>

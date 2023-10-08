@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/nullstyle.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>task2</title>
+	</head>
+	<body>
+		<main class="page">
+			<div class="page__container">
+				<div class="task">
+					<div class="task__condition text">
+						Задача 8. Дано масив студентів (піб, курс, факультет). Підрахувати кількість різних факультетів, та кількість студентів кожного з курсів.
+					</div>
+				</div>
+				<script>
+					let students = [
+						{
+							fuulName: "Ivanov D.K",
+							cource: 3,
+							faculty: "design",
+						},
+						{
+							fuulName: "Tkach f.S",
+							cource: 4,
+							faculty: "design",
+						},
+						{
+							fuulName: "Gerich D.K",
+							cource: 1,
+							faculty: "economic",
+						},
+						{
+							fuulName: "Romanov J.S",
+							cource: 2,
+							faculty: "engeneering",
+						},
+						{
+							fuulName: "Kravchuck T.K",
+							cource: 1,
+							faculty: "engeneering",
+						},
+						{
+							fuulName: "Sevchuk W.R",
+							cource: 4,
+							faculty: "economic",
+						},
+						{
+							fuulName: "Tarasov F.A",
+							cource: 1,
+							faculty: "design",
+						},
+					]
+					function getUnivesityInfo(students) {
+						let faculties = new Set()
+						let studentsCountFromEveryCource = new Map()
+						for (const student of students) {
+							faculties.add(student.faculty)
+							studentsCountFromEveryCource.set(`${student.cource} cource`, (studentsCountFromEveryCource.get(`${student.cource} cource`) ?? 0) + 1)
+						}
+						return { facultiesCount: faculties.size, studentsCountFromEveryCource }
+					}
+					let universityInfo = getUnivesityInfo(students)
+					let { facultiesCount, studentsCountFromEveryCource } = universityInfo
+					console.log(facultiesCount)
+					console.log(studentsCountFromEveryCource)
+				</script>
+			</div>
+		</main>
+	</body>
+</html>

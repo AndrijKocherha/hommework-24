@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/nullstyle.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>task0</title>
+	</head>
+	<body>
+		<main class="page">
+			<div class="page__container">
+				<div class="task">
+					<div class="task__condition text">Задача 6. Дано масив книг (назва, рік видання, автор). Підрахувати кількість книг для кожного автора.</div>
+				</div>
+				<script>
+					const books = [
+						{
+							title: "Ivan book 1",
+							publicationYear: 2004,
+							autor: "Ivan Petrov",
+						},
+						{
+							title: "Vasil book1",
+							publicationYear: 1879,
+							autor: "Vasil Sachuk",
+						},
+						{
+							title: "Ivan book 2",
+							publicationYear: 1999,
+							autor: "Ivan Petrov",
+						},
+						{
+							title: "Vasil book 2",
+							publicationYear: 1997,
+							autor: "Vasil Sachuk",
+						},
+
+						{
+							title: "Taras book 1",
+							publicationYear: 2006,
+							autor: "Taras Scherbak",
+						},
+					]
+					function getBooksCountOfAuthors(books) {
+						let booksAutorsCount = new Map()
+						for (const book of books) {
+							//let count = booksAutorsCount.get(book.autor) ?? 0
+							//booksAutorsCount.set(book.autor, count + 1)
+							booksAutorsCount.set(book.autor, (booksAutorsCount.get(book.autor) ?? 0) + 1)
+						}
+						return booksAutorsCount
+					}
+					let authorsBooksCount = getBooksCountOfAuthors(books)
+					console.log(authorsBooksCount)
+				</script>
+			</div>
+		</main>
+	</body>
+</html>

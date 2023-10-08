@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/nullstyle.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>task1</title>
+	</head>
+	<body>
+		<main class="page">
+			<div class="page__container">
+				<div class="task">
+					<div class="task__condition text">
+						Задача 7. Дано інформацію про відвідувачів деякого сайту (для кожного відвідувача зберігається логін). Підрахувати для кожного клієнта кількість відвідувань.
+					</div>
+					<input class="inp" type="text" />
+				</div>
+				<script>
+					//=================================================
+					const visitors = [
+						{
+							visitorLogIn: "petro123",
+						},
+						{
+							visitorLogIn: "vas1il",
+						},
+						{
+							visitorLogIn: "vas1il",
+						},
+						{
+							visitorLogIn: "ivan7",
+						},
+						{
+							visitorLogIn: "ivan7",
+						},
+						{
+							visitorLogIn: "petro123",
+						},
+						{
+							visitorLogIn: "ivan7",
+						},
+					]
+					function getUserVisitingCount(visitors) {
+						let map = new Map()
+						visitors.forEach((element) => map.set(element.visitorLogIn, (map.get(element.visitorLogIn) ?? 0) + 1))
+						return map
+					}
+					let userVisitingCount = getUserVisitingCount(visitors)
+					console.log(userVisitingCount)
+					//=================================================================
+					//const visitors = [
+					//	{
+					//		visitorLogIn: "petro123",
+					//		count: 3,
+					//	},
+					//	{
+					//		visitorLogIn: "vas1il",
+					//		count: 2,
+					//	},
+					//	{
+					//		visitorLogIn: "ivan7",
+					//		count: 4,
+					//	},
+					//]
+					////localStorage.setItem("users", JSON.stringify(visitors))
+					//function getUserVisitingCount(input) {
+					//	let visitors = JSON.parse(localStorage.getItem("users"))
+					//	let inpVal = input.value
+					//	console.log(inpVal)
+					//	inpVal = inpVal.trim()
+					//	c = 0
+					//	let newUsers = []
+					//	if (/\S/.test(inpVal)) {
+					//		visitors.forEach((element, indx) => {
+					//			newUsers.push(element)
+					//			if (element.visitorLogIn == inpVal) {
+					//				element.count += 1
+					//			} else {
+					//				c += 1
+					//			}
+					//		})
+					//		if (c === visitors.length) {
+					//			let newUser = {
+					//				visitorLogIn: inpVal,
+					//				count: 1,
+					//			}
+					//			newUsers.push(newUser)
+					//		}
+					//		console.log(newUsers)
+					//		localStorage.setItem("users", JSON.stringify(newUsers))
+					//	}
+					//}
+					////getUserVisitingCount(".inp")
+					//window.onload = function () {
+					//	let inp = document.querySelector(".inp")
+					//	inp.addEventListener("change", () => getUserVisitingCount(inp))
+					//}
+				</script>
+			</div>
+		</main>
+	</body>
+</html>
